@@ -1,0 +1,607 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Company IT Requirements | IT Knowledge Hub</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-logo">IT</div>
+      <div>
+        <h2>IT Knowledge Hub</h2>
+        <p>Company Requirements</p>
+      </div>
+    </div>
+
+    <nav>
+      <a class="nav-link active" href="#dashboard">
+        ▦ Dashboard
+      </a>
+
+      <a class="nav-link" href="#companies">
+        ▤ Company Directory
+      </a>
+
+      <a class="nav-link" href="#user-types">
+        ◉ User Types
+      </a>
+
+      <a class="nav-link" href="#email-domains">
+        @ Email & Domains
+      </a>
+
+      <a class="nav-link" href="#licenses">
+        ▣ Microsoft Licenses
+      </a>
+
+      <a class="nav-link" href="#applications">
+        ◈ Applications & Systems
+      </a>
+
+      <a class="nav-link" href="#access">
+        ✓ Access Requirements
+      </a>
+
+      <a class="nav-link" href="#documentation">
+        ▤ Documentation Status
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <span class="status-dot"></span>
+      Information Collection
+    </div>
+  </aside>
+
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <header class="topbar">
+      <div>
+        <p class="muted">
+          IT Department / Company Information Management
+        </p>
+      </div>
+
+      <div class="user-badge">IT</div>
+    </header>
+
+
+    <!-- Dashboard -->
+    <section class="page-heading" id="dashboard">
+      <div>
+        <p class="eyebrow">COMPANY IT REQUIREMENTS</p>
+
+        <h1>Company IT Requirements Dashboard</h1>
+
+        <p class="muted">
+          A centralized overview of supported companies, user types,
+          email domains, Microsoft licenses, applications, and access
+          requirements.
+        </p>
+      </div>
+
+      <button class="primary-btn" id="addBtn">
+        + Add Information
+      </button>
+    </section>
+
+
+    <!-- Information Collection Notice -->
+    <section class="panel">
+      <div class="panel-heading">
+        <div>
+          <h3>Information Collection Guidelines</h3>
+
+          <p>
+            Use available documents and consult the relevant team
+            members to collect and verify the required information.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        Since access to company systems is not yet available,
+        begin by reviewing existing documentation and asking the
+        team for the information needed to build a reliable reference.
+      </p>
+
+      <p>
+        Record the source of each item and mark unconfirmed details
+        as Pending Verification.
+      </p>
+    </section>
+
+
+    <!-- Summary Cards -->
+    <section class="stats-grid">
+
+      <article class="stat-card">
+        <div class="stat-label">Supported Companies</div>
+        <div class="stat-icon blue">▤</div>
+        <h2 id="totalCount">0</h2>
+        <p>Companies documented</p>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-label">User Types</div>
+        <div class="stat-icon green">◉</div>
+        <h2 id="activeCount">0</h2>
+        <p>Employee and user categories</p>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-label">Microsoft Licenses</div>
+        <div class="stat-icon amber">▣</div>
+        <h2 id="soonCount">0</h2>
+        <p>License assignments documented</p>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-label">Pending Verification</div>
+        <div class="stat-icon red">!</div>
+        <h2 id="expiredCount">0</h2>
+        <p>Items requiring confirmation</p>
+      </article>
+
+    </section>
+
+
+    <!-- Analytics -->
+    <section class="charts-grid" id="analytics">
+
+      <article class="panel">
+        <div class="panel-heading">
+          <div>
+            <h3>Documentation Status</h3>
+            <p>Overview of verified and unverified information</p>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <canvas id="statusChart"></canvas>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-heading">
+          <div>
+            <h3>Information by Category</h3>
+            <p>Distribution of collected company IT information</p>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <canvas id="departmentChart"></canvas>
+        </div>
+      </article>
+
+    </section>
+
+
+    <!-- Company Directory -->
+    <section class="panel" id="companies">
+
+      <div class="panel-heading table-heading">
+        <div>
+          <h3>Company Directory</h3>
+          <p>
+            Record the companies we support, their websites,
+            locations, and branches.
+          </p>
+        </div>
+
+        <div class="table-controls">
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Search companies or locations..."
+          >
+
+          <select id="statusFilter" aria-label="Filter by verification status">
+            <option value="all">All Records</option>
+            <option value="verified">Verified</option>
+            <option value="pending">Pending Verification</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Company Name</th>
+              <th>Website</th>
+              <th>Locations / Branches</th>
+              <th>Verification Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody id="licenseTable"></tbody>
+        </table>
+      </div>
+
+      <div class="empty-state" id="emptyState" hidden>
+        No matching company records found.
+      </div>
+
+      <div class="table-footer">
+        <span id="resultCount">0 records</span>
+
+        <button class="secondary-btn" id="exportBtn">
+          ↓ Export CSV
+        </button>
+      </div>
+
+    </section>
+
+
+    <!-- User Types -->
+    <section class="panel" id="user-types">
+
+      <div class="panel-heading">
+        <div>
+          <h3>User Types & Email Requirements</h3>
+
+          <p>
+            Identify user categories and determine whether each
+            type normally requires a company email address and domain.
+          </p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>User Type</th>
+              <th>Department / Role</th>
+              <th>Company Email Required</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+
+          <tbody id="userTypesTable"></tbody>
+        </table>
+      </div>
+
+    </section>
+
+
+    <!-- Email & Domains -->
+    <section class="panel" id="email-domains">
+
+      <div class="panel-heading">
+        <div>
+          <h3>Email & Domains</h3>
+
+          <p>
+            Document common email domains and the user types
+            that require company email accounts.
+          </p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Website</th>
+              <th>Email Domain</th>
+              <th>Applicable User Types</th>
+              <th>Verification Status</th>
+            </tr>
+          </thead>
+
+          <tbody id="emailDomainsTable"></tbody>
+        </table>
+      </div>
+
+    </section>
+
+
+    <!-- Microsoft Licenses -->
+    <section class="panel" id="licenses">
+
+      <div class="panel-heading">
+        <div>
+          <h3>Microsoft License Requirements</h3>
+
+          <p>
+            Document commonly used Microsoft licenses for each
+            company and user type. Verify assignments with the IT team.
+          </p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>User Type</th>
+              <th>Microsoft License</th>
+              <th>Purpose</th>
+              <th>Verification Status</th>
+            </tr>
+          </thead>
+
+          <tbody id="microsoftLicensesTable"></tbody>
+        </table>
+      </div>
+
+    </section>
+
+
+    <!-- Applications & Systems -->
+    <section class="panel" id="applications">
+
+      <div class="panel-heading">
+        <div>
+          <h3>Applications & Systems</h3>
+
+          <p>
+            List the applications and systems commonly used by
+            each company or user type.
+          </p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Application / System</th>
+              <th>Purpose</th>
+              <th>Applicable User Types</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+
+          <tbody id="applicationsTable"></tbody>
+        </table>
+      </div>
+
+    </section>
+
+
+    <!-- Access Requirements -->
+    <section class="panel" id="access">
+
+      <div class="panel-heading">
+        <div>
+          <h3>Access Requirements</h3>
+
+          <p>
+            Record the common account, application, permission,
+            and approval requirements for each user type.
+          </p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>User Type</th>
+              <th>System</th>
+              <th>Required Access</th>
+              <th>Approval Required</th>
+            </tr>
+          </thead>
+
+          <tbody id="accessRequirementsTable"></tbody>
+        </table>
+      </div>
+
+    </section>
+
+
+    <!-- Documentation Status -->
+    <section class="panel" id="documentation">
+
+      <div class="panel-heading">
+        <div>
+          <h3>Documentation Status</h3>
+
+          <p>
+            Track information sources, verification, and items
+            that still require follow-up.
+          </p>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Information Item</th>
+              <th>Source / Contact</th>
+              <th>Status</th>
+              <th>Last Updated</th>
+              <th>Follow-up Notes</th>
+            </tr>
+          </thead>
+
+          <tbody id="documentationTable"></tbody>
+        </table>
+      </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+      Company IT Requirements |
+      <span id="currentYear"></span>
+      <br>
+      Internal information reference — verify details with the
+      responsible team before use.
+    </footer>
+
+  </main>
+
+
+  <!-- Add / Edit Information Dialog -->
+  <dialog id="licenseDialog">
+
+    <form id="licenseForm">
+
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">COMPANY INFORMATION</p>
+          <h2 id="dialogTitle">Add Company Information</h2>
+        </div>
+
+        <button
+          type="button"
+          class="close-btn"
+          id="closeDialog"
+          aria-label="Close"
+        >
+          
+        </button>
+      </div>
+
+
+      <input type="hidden" id="licenseId">
+
+
+      <label>
+        Company Name *
+        <input
+          id="programName"
+          required
+          maxlength="150"
+          placeholder="Enter company name"
+        >
+      </label>
+
+
+      <label>
+        Company Website
+        <input
+          id="department"
+          type="text"
+          maxlength="200"
+          placeholder="https://example.com"
+        >
+      </label>
+
+
+      <label>
+        Locations / Branches
+        <input
+          id="seats"
+          type="text"
+          maxlength="300"
+          placeholder="Enter known locations or branches"
+        >
+      </label>
+
+
+      <label>
+        Common Email Domain
+        <input
+          id="startDate"
+          type="text"
+          maxlength="150"
+          placeholder="example.com"
+        >
+      </label>
+
+
+      <label>
+        Information Category *
+        <select id="licenseType" required>
+          <option value="company">Company Details</option>
+          <option value="user-type">User Types</option>
+          <option value="email-domain">Email & Domains</option>
+          <option value="microsoft-license">Microsoft Licenses</option>
+          <option value="application">Applications & Systems</option>
+          <option value="access">Access Requirements</option>
+        </select>
+      </label>
+
+
+      <label>
+        Verification Status
+        <select id="renewalStatus">
+          <option value="pending">Pending Verification</option>
+          <option value="verified">Verified</option>
+          <option value="follow-up">Follow-up Required</option>
+        </select>
+      </label>
+
+
+      <label>
+        Source / Contact
+        <input
+          id="source"
+          maxlength="200"
+          placeholder="Document name or team contact"
+        >
+      </label>
+
+
+      <label>
+        Notes
+        <textarea
+          id="notes"
+          rows="3"
+          maxlength="1000"
+          placeholder="Record confirmed details or information to follow up"
+        ></textarea>
+      </label>
+
+
+      <p id="formError" class="form-error" hidden></p>
+
+
+      <div class="dialog-actions">
+        <button
+          type="button"
+          class="secondary-btn"
+          id="cancelDialog"
+        >
+          Cancel
+        </button>
+
+        <button type="submit" class="primary-btn">
+          Save Information
+        </button>
+      </div>
+
+    </form>
+
+  </dialog>
+
+
+  <!-- Notifications -->
+  <div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+</body>
+</html>
