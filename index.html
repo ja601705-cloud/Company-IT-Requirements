@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Company IT Requirements</title>
 <style>
-:root {
-  --blue:#2b5cef;
+:root { 
+  --blue:#2855D9;
   --blue-dark:#1E40AF;
   --blue-light:#EEF3FF;
   --green:#168566;
@@ -30,31 +30,31 @@ body {
 }
 button,input,select,textarea {font:inherit}
 button {cursor:pointer}
-button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible {
-  outline:3px solid #2855D9;
+button:focus-visible,input:focus-visible,select:focus-visible {
+  outline:3px solid #93C5FD;
   outline-offset:2px;
 }
 .intro-screen {
   position:fixed;inset:0;z-index:9999;
   display:flex;align-items:center;justify-content:center;
   text-align:center;color:white;padding:24px;
-  background:linear-gradient(135deg,#164E63,#168566 52%,#2855D9);
+  background:linear-gradient(135deg,#0c3c9c,#7d9bc7e9 52%,#2855D9);
   transition:opacity .65s ease,visibility .65s ease;
 }
-
+.intro-screen.is-hidden {opacity:0;visibility:hidden;pointer-events:none}
 .intro-content {max-width:700px;animation:appear .8s ease both}
 .intro-logo {
   display:grid;place-items:center;margin:0 auto 24px;
   width:82px;height:82px;border-radius:24px;
-  background:#e3edeb;
+  background:#ffffff22;border:1px solid #ffffff45;
   font-size:37px;font-weight:800;
 }
-.intro-eyebrow {font-size:11px;letter-spacing:3px;color:#D9FFEE;font-weight:800}
+.intro-eyebrow {font-size:11px;letter-spacing:3px;color:#B8F5D8;font-weight:800}
 .intro-content h1 {font-size:clamp(28px,5vw,48px);margin:14px 0}
-.intro-subtitle {color:#F0FFF8;line-height:1.8}
-.intro-loader {height:4px;width:160px;margin:30px auto 14px;background:#0ca78840;border-radius:9px;overflow:hidden}
-.intro-loader span {display:block;height:100%;background:rgb(37, 111, 228);animation:loading 2.2s ease forwards}
-.intro-loading-text {font-size:12px;color:#E6FFF4}
+.intro-subtitle {color:#ffffffd9;line-height:1.8}
+.intro-loader {height:4px;width:160px;margin:30px auto 14px;background:#ffffff40;border-radius:9px;overflow:hidden}
+.intro-loader span {display:block;height:100%;background:white;animation:loading 2.2s ease forwards}
+.intro-loading-text {font-size:12px;color:#ffffffbd}
 @keyframes appear {from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 @keyframes loading {from{width:0}to{width:100%}}
 .app {min-height:100vh}
@@ -66,16 +66,16 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .brand {display:flex;align-items:center;gap:11px;padding:0 8px 25px}
 .brand-icon {display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#ffffff20;font-size:22px}
 .brand strong {font-size:15px;line-height:1.4}
-.brand small {display:block;color:#D6E2FF;font-size:11px;margin-top:3px}
-.nav-label {font-size:10px;letter-spacing:1.5px;color:#FFFFFF;padding:13px 12px 8px}
+.brand small {display:block;color:#ffffffb8;font-size:11px;margin-top:3px}
+.nav-label {font-size:10px;letter-spacing:1.5px;color:#ffffffa8;padding:13px 12px 8px}
 .nav-link {
   display:flex;align-items:center;gap:12px;width:100%;border:0;
   padding:11px 12px;margin:2px 0;border-radius:10px;
-  color:#E6EEFF;background:transparent;text-align:left;font-size:13px;
+  color:#ffffffd9;background:transparent;text-align:left;font-size:13px;
 }
 .nav-link .nav-icon {width:22px;text-align:center;font-size:17px}
 .nav-link:hover,.nav-link.active {background:#ffffff20;color:white}
-.sidebar-note {margin-top:auto;padding:14px 10px 0;color:#D6E2FF;font-size:11px;line-height:1.7}
+.sidebar-note {margin-top:auto;padding:14px 10px 0;color:#ffffffa8;font-size:11px;line-height:1.7}
 .main {margin-left:250px;padding:28px;max-width:1800px}
 .topbar {display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:25px}
 .eyebrow {color:var(--green);font-weight:800;font-size:10px;letter-spacing:1.7px;text-transform:uppercase}
@@ -85,14 +85,14 @@ h1,h2,h3,p {margin-top:0}
 .primary,.secondary,.danger {
   border:0;border-radius:10px;padding:10px 15px;font-weight:700;
 }
-.primary {background:var(--blue);color:#FFFFFF}
+.primary {background:var(--blue);color:white}
 .primary:hover {background:var(--blue-dark)}
 .secondary {background:var(--blue-light);color:var(--blue)}
-.danger {background:#038e77f7;color:var(--red)}
+.danger {background:#FFF0F1;color:var(--red)}
 .cards {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-bottom:22px}
 .stat-card,.panel,.section-card {
   background:var(--white);border:1px solid var(--border);border-radius:var(--radius);
-  box-shadow:0 4px 18px #024d68d1;
+  box-shadow:0 4px 18px #164e6308;
 }
 .stat-card {padding:19px;min-width:0}
 .stat-card.clickable,.chart-row.dash-link {cursor:pointer;transition:background .2s,border-color .2s,transform .2s,box-shadow .2s}
@@ -122,8 +122,8 @@ h1,h2,h3,p {margin-top:0}
 .bar-track {height:9px;background:#EEF2F7;border-radius:20px;overflow:hidden}
 .bar-fill {height:100%;width:0;background:var(--blue);border-radius:20px;transition:width .3s}
 .status-dot {display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;background:var(--green)}
-.status-dot.follow-up {background:#2ed6ba}
-.status-dot.pending {background:#012b1a}
+.status-dot.follow-up {background:#D69E2E}
+.status-dot.pending {background:#AAB5C4}
 .section-card {overflow:hidden}
 .section-heading {padding:21px 22px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
 .section-heading h2 {font-size:21px;margin:5px 0}
@@ -196,17 +196,10 @@ tbody tr:hover {background:#FAFCFB}
   *,*::before,*::after {animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
 </style>
-</head>
-<body>
-
+</body>
 <div id="introScreen" class="intro-screen" role="status" aria-live="polite">
   <div class="intro-content">
-    <div class="intro-logo-wrap">
-  <img
-    src="ikk-logo.png"
-    alt="IKK Logo"
-    class="intro-logo-image"
-    />
+    <img class="intro-logo" src="company-logo.png" alt="IKK Logo">
     <p class="intro-eyebrow">INFORMATION MANAGEMENT</p>
     <h1>Company IT Requirements</h1>
     <p class="intro-subtitle">Your central dashboard for company IT information</p>
@@ -267,7 +260,7 @@ tbody tr:hover {background:#FAFCFB}
 
       <div class="overview-grid">
         <article class="panel">
-          <h3>Verification Progress</h3>
+          <h3>Documentation Status</h3>
           <p class="panel-subtitle">Verification progress across all records</p>
           <div id="statusChart"></div>
         </article>
@@ -333,9 +326,14 @@ tbody tr:hover {background:#FAFCFB}
 </div>
 
 <div id="toast" role="status" style="position:fixed;bottom:20px;right:20px;background:#17243B;color:white;padding:12px 18px;border-radius:10px;display:none;z-index:2000;max-width:calc(100vw - 40px)"></div>
-
+<button id="themeToggle"
+  class="theme-toggle"
+  type="button"
+  aria-label="Switch to dark mode"
+  title="Dark Mode"
+>🌙</button>
 <script>
-(() => {
+(() => {document.getElementById("currentYear").textContent = new Date().getFullYear();
   "use strict";
 
   const STORAGE_KEY = "company-it-requirements-records-v1";
@@ -405,11 +403,6 @@ tbody tr:hover {background:#FAFCFB}
     return String(value ?? "").replace(/[&<>"']/g, char => ({
       "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
     }[char]));
-  }
-
-  function withScheme(value) {
-    if (!value) return value;
-    return /^https?:\/\//i.test(value) ? value : "https://" + value;
   }
 
   function getSectionRecords(section) {
@@ -482,7 +475,8 @@ tbody tr:hover {background:#FAFCFB}
   }
 
   function renderTable() {
-    const fields = categories[currentSection].fields;
+    const config = categories[currentSection];
+    const fields = config.fields;
     document.getElementById("tableHead").innerHTML =
       `<tr>${fields.map(f => `<th>${escapeHTML(f[1])}</th>`).join("")}<th>Status</th><th>Actions</th></tr>`;
 
@@ -521,10 +515,11 @@ tbody tr:hover {background:#FAFCFB}
   function openModal(id = null) {
     editingId = id;
     const record = id ? records.find(r => r.id === id) : null;
+    const config = categories[currentSection];
     document.getElementById("modalTitle").textContent = record ? "Edit Record" : "Add Record";
 
     const categoryOptions = Object.entries(categories).map(([key, item]) =>
-      `<option value="${key}" ${key === (record ? record.category : currentSection) ? "selected" : ""}>${escapeHTML(item.title)}</option>`
+      `<option value="${key}" ${key === currentSection ? "selected" : ""}>${escapeHTML(item.title)}</option>`
     ).join("");
 
     document.getElementById("formFields").innerHTML = `
@@ -549,12 +544,12 @@ tbody tr:hover {background:#FAFCFB}
           ? `<input type="date" id="field-${key}" name="${key}" value="${escapeHTML(value)}">`
           : full
             ? `<textarea id="field-${key}" name="${key}">${escapeHTML(value)}</textarea>`
-            : `<input id="field-${key}" name="${key}" value="${escapeHTML(value)}" ${["name","domain"].includes(key) ? "required" : ""} ${key === "url" ? 'placeholder="example.com"' : ""}>`;
+            : `<input id="field-${key}" name="${key}" value="${escapeHTML(value)}" ${["name","domain"].includes(key) ? "required" : ""} ${key === "url" ? 'type="url" placeholder="https://example.com"' : ""}>`;
         return `<div class="field ${full}"><label for="field-${key}">${escapeHTML(label)}</label>${input}</div>`;
       }).join("");
     }
 
-    drawFields(record ? record.category : currentSection);
+    drawFields(currentSection);
     document.getElementById("recordCategory").addEventListener("change", event => {
       drawFields(event.target.value);
     });
@@ -569,7 +564,8 @@ tbody tr:hover {background:#FAFCFB}
   }
 
   function exportCSV() {
-    const fields = [...categories[currentSection].fields, ["status","Verification Status"]];
+    const config = categories[currentSection];
+    const fields = [...config.fields, ["status","Verification Status"]];
     const rows = getSectionRecords(currentSection);
     if (!rows.length) {
       showToast("There are no records in this section to export yet.");
@@ -629,9 +625,7 @@ tbody tr:hover {background:#FAFCFB}
   });
 
   document.getElementById("globalAdd").addEventListener("click", () => {
-    if (document.getElementById("dashboard").hidden === false) {
-      currentSection = "companies";
-    }
+    if (document.getElementById("dashboard").hidden === false) openSection("companies");
     openModal();
   });
   document.getElementById("sectionAdd").addEventListener("click", () => openModal());
@@ -665,7 +659,6 @@ tbody tr:hover {background:#FAFCFB}
 
   document.getElementById("recordForm").addEventListener("submit", event => {
     event.preventDefault();
-    const wasEditing = Boolean(editingId);
     const section = document.getElementById("recordCategory").value;
     const values = {};
     categories[section].fields.forEach(([key]) => {
@@ -679,33 +672,28 @@ tbody tr:hover {background:#FAFCFB}
       return;
     }
 
-    if (values.url) {
-      values.url = withScheme(values.url);
-      if (safeURL(values.url) === "#") {
-        showToast("Please enter a valid website, for example example.com");
-        return;
-      }
+    if (values.url && safeURL(values.url) === "#") {
+      showToast("Please enter a valid HTTP or HTTPS URL.");
+      return;
     }
 
-    if (wasEditing) {
+    if (editingId) {
       const index = records.findIndex(r => r.id === editingId);
       if (index >= 0) records[index] = {...records[index], ...values, status};
     } else {
       records.push({
         id: (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random()),
-        category: section, ...values, status,
-        createdAt: new Date().toISOString()
+        category:section, ...values, status,
+        createdAt:new Date().toISOString()
       });
     }
 
     if (saveRecords()) {
       closeModal();
-      if (document.getElementById("sectionView").hidden || currentSection !== section) {
-        openSection(section);
-      } else {
-        renderTable();
-      }
-      showToast(wasEditing ? "Record updated." : "Record saved.");
+      if (document.getElementById("sectionView").hidden) openSection(section);
+      else if (currentSection !== section) openSection(section);
+      else renderTable();
+      showToast(editingId ? "Record updated." : "Record saved.");
     }
   });
 
@@ -718,9 +706,9 @@ tbody tr:hover {background:#FAFCFB}
     intro.classList.add("is-hidden");
     setTimeout(() => intro.remove(), 700);
   };
-  window.addEventListener("load", () => setTimeout(hideIntro, 2200), {once:true});
+  window.addEventListener("load", () => setTimeout(hideIntro, 5000), {once:true});
   setTimeout(hideIntro, 5000);
 })();
 </script>
-</body>
+</body>     
 </html>
