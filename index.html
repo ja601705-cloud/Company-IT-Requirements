@@ -3,7 +3,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Company IT Requirements</title>
+<title>IT Customer Support Hub</title>
 <style>
 :root { 
   --blue:#2855D9;
@@ -201,7 +201,7 @@ tbody tr:hover {background:#FAFCFB}
   <div class="intro-content">
     <img class="intro-logo" src="company-logo.png" alt="IKK Logo">
     <p class="intro-eyebrow">INFORMATION MANAGEMENT</p>
-    <h1>Company IT Requirements</h1>
+    <h1>IT Customer Support Hub</h1>
     <p class="intro-subtitle">Your central dashboard for company IT information</p>
     <div class="intro-loader"><span></span></div>
     <p class="intro-loading-text">Preparing your dashboard...</p>
@@ -212,7 +212,7 @@ tbody tr:hover {background:#FAFCFB}
   <aside class="sidebar">
     <div class="brand">
       <div class="brand-icon">▦</div>
-      <div><strong>Company IT<br>Requirements</strong><small>Information Dashboard</small></div>
+      <div><strong>IT Customer Support<br>Hub</strong><small>Information Dashboard</small></div>
     </div>
     <div class="nav-label">WORKSPACE</div>
     <nav id="mainNav">
@@ -225,18 +225,19 @@ tbody tr:hover {background:#FAFCFB}
       <button class="nav-link" data-target="access"><span class="nav-icon">♢</span>Access Requirements</button>
       <button class="nav-link" data-target="documentation"><span class="nav-icon">▤</span>Documentation Status</button>
     </nav>
-    <div class="sidebar-note">Company IT Requirements<br>Local workspace · Private to this browser</div>
+    <div class="sidebar-note">IT Customer Support Hub<br>Local workspace · Private to this browser</div>
   </aside>
 
   <main class="main">
     <header class="topbar">
       <div>
         <div class="eyebrow">IT OPERATIONS / OVERVIEW</div>
-        <h1 id="pageTitle">Company IT Requirements Dashboard</h1>
-        <p>Manage company IT information in one organized workspace.</p>
+        <h1 id="pageTitle">IT Customer Support Hub</h1>
+        <p>Manage IT customer support information in one organized workspace.</p>
       </div>
-      <button class="primary" id="globalAdd">＋ Add Record</button>
-    </header>
+     
+
+  </header>
 
     <section id="dashboard">
       <div class="cards">
@@ -300,6 +301,26 @@ tbody tr:hover {background:#FAFCFB}
             <button class="secondary" id="exportBtn">Export CSV</button>
           </div>
           <div class="table-wrap">
+
+
+  <input
+    type="file"
+    id="documentFileInput"
+    multiple
+    style="display:block; margin:15px 0;"
+  >
+
+  <button type="button" class="primary"
+          id="chooseUploadBtn">
+    رفع الملفات
+  </button>
+
+  <p id="documentUploadStatus"
+     style="margin-top:12px;"></p>
+
+  <div id="documentUploadedList"></div>
+</div>
+
             <table>
               <thead id="tableHead"></thead>
               <tbody id="tableBody"></tbody>
@@ -307,10 +328,14 @@ tbody tr:hover {background:#FAFCFB}
             <div id="emptyState" class="empty" hidden><strong>No records found</strong>Add a record or change your search and filters.</div>
           </div>
           <div class="result-count" id="resultCount"></div>
+
         </div>
+
+
+
       </article>
     </section>
-    <footer class="footer">Company IT Requirements · <span id="currentYear"></span></footer>
+    <footer class="footer">IT Customer Support Hub · <span id="currentYear"></span></footer>
   </main>
 </div>
 
@@ -354,10 +379,15 @@ tbody tr:hover {background:#FAFCFB}
       fields:[["domain","Domain"],["email","Email Address / Pattern"],["provider","Email Provider"],["owner","Responsible Team / Owner"],["notes","Notes"]]
     },
     "licenses": {
-      title:"Microsoft Licenses",
-      description:"Microsoft license types, allocations, and renewal information.",
-      fields:[["name","License Name"],["quantity","Quantity"],["assignedTo","Assigned To / User Type"],["renewalDate","Renewal Date"],["notes","Notes"]]
-    },
+  title: "Microsoft Licenses",
+  description: "Microsoft license types used by supported companies.",
+  fields: [
+    
+  ["name", "License Name"],
+    ["assignedTo", "Assigned To / User Type"],
+    ["notes", "Notes"]
+  ]
+},
     "applications": {
       title:"Applications & Systems",
       description:"Business applications, system owners, and requirements.",
@@ -624,10 +654,6 @@ tbody tr:hover {background:#FAFCFB}
     else openSection(button.dataset.target);
   });
 
-  document.getElementById("globalAdd").addEventListener("click", () => {
-    if (document.getElementById("dashboard").hidden === false) openSection("companies");
-    openModal();
-  });
   document.getElementById("sectionAdd").addEventListener("click", () => openModal());
   document.getElementById("closeModal").addEventListener("click", closeModal);
   document.getElementById("cancelModal").addEventListener("click", closeModal);
